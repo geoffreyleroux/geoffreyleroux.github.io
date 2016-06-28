@@ -1,0 +1,12 @@
+@import 'compass';
+
+* {
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+}
+
+// Component styles are injected through grunt
+// injector
+@import 'states/home/home.scss';
+@import 'states/webclient.scss';
+// endinjector

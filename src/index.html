@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:200,400,500,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- build:css(.) /vendor.css -->
+    <link rel="stylesheet" href="/bower_components/pure/base.css"/>
+    <link rel="stylesheet" href="/bower_components/pure/grids.css"/>
+    <link rel="stylesheet" href="/bower_components/pure/grids-responsive.css"/>
+    <link rel="stylesheet" href="/bower_components/pure/menus.css"/>
+    <link rel="stylesheet" href="/bower_components/pure/tables.css"/>
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:css({build/.tmp,src}) /app.css -->
+    <link rel="stylesheet" href="/app.css">
+    <!-- injector:css -->
+    <!-- endinjector -->
+    <!-- endbuild -->
+    
+</head>
+<body ng-app="app" device-detector>
+
+    <!--[if lte IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to
+        improve your experience.</p>
+    <![endif]-->
+
+    <section ui-view></section>
+
+    <!-- build:js({.,node_modules}) /vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/lodash/lodash.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/re-tree/re-tree.js"></script>
+    <script src="/bower_components/ng-device-detector/ng-device-detector.js"></script>
+    <!-- endbower -->
+
+    <!-- endbuild -->
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+
+    <!-- build:js({build/.tmp,src}) /app.js -->
+    <script src="/app.js"></script>
+    <!-- injector:js -->
+    <script src="/states/home/home.js"></script>
+    <script src="/states/webclient.js"></script>
+    <!-- endinjector -->
+    <!-- endbuild -->
+</body>
+</html>
