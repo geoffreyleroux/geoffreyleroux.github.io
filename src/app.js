@@ -6,6 +6,8 @@ angular.module("app", [
     'ngTouch',
     'ui.router',
     'ng.deviceDetector',
+    'service.news'
+
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
