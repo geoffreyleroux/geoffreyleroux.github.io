@@ -1,8 +1,8 @@
 'use strict';
 angular.module('service.comments', [])
     .factory('comments', function($window, $q, $http) {
-        // var baseURL = "http://infinite-peak-72019.herokuapp.com";
-        var baseURL = "http://localhost:8080";
+        var baseURL = "http://infinite-peak-72019.herokuapp.com";
+        // var baseURL = "http://localhost:8080";
 
 
         var getOneNewsComments = function(news_id) {
