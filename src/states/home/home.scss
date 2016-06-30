@@ -1,0 +1,10 @@
+#home {
+	
+	min-height: calc(100vh - 135px);
+
+	md-list {
+		background-color: #AAA;
+		max-height: 300px;
+		overflow-y: scroll;
+	}
+}

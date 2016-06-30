@@ -1,3 +1,9 @@
-<div id="webclient">
+<div layout="column" flex layout-fill ng-cloak>
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+            <h2>Reddit Material</h2></div>
+    </md-toolbar>
 </div>
-<section class="app-content" ui-view autoscroll='true'></section>
+<md-content md-theme="altTheme">
+    <section class="app-content" ui-view autoscroll='true'></section>
+</md-content>
