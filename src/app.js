@@ -3,14 +3,17 @@
 angular.module("app", [
     'ngSanitize',
     'ngAnimate',
-    'ngTouch',
+    'ngMaterial',
     'ui.router',
     'ng.deviceDetector',
-    'service.news'
 
+    'service.news',
+    'service.comments'
 ])
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+
     $urlRouterProvider.otherwise('/webclient/home');
 
     $locationProvider.html5Mode({
@@ -30,7 +33,9 @@ angular.module("app", [
             templateUrl: '/states/home/home.html',
             controller: 'HomeCtrl',
             menu: "home"
-        })
+        });
+
+
 })
 
 .run(function($location, $window, $rootScope, $state) {
