@@ -1,25 +1,28 @@
 <md-subheader class="md-primary">All news</md-subheader>
 <div id="home" layout="row" layout-align="center" layout-wrap>
-    <md-card flex="45" ng-repeat="n in news">
-        <md-card-content>
+    <md-list layout-padding ng-repeat="n in news">
+        <md-list-item class="md-3-line">
             <h2>{{n.title}}</h2>
             <p>{{n.content}}</p>
             <a href='{{n.link}}'>{{n.link}}</a>
-        </md-card-content>
-        <md-card-footer>
             <p>{{n.createDate | date : 'dd/MM/yyyy'}}</p>
-        </md-card-footer>
-        <md-list layout-padding ng-if="n.news_comments.length">
-            <md-list-item class="md-3-line"  ng-repeat="comment in n.news_comments track by $index">
-                <div class="md-list-item-text">
-                    <h3>{{comment.content}}</h3>
+        </md-list-item>
+        <md-card ng-if="n.news_comments.length">
+            <h2>Comments</h2>
+            <div ng-repeat="comment in n.news_comments track by $index">
+                <md-card-content>
                     <h4>{{comment.author}}</h4>
-                    <p>
-                        {{n.createDate | date : 'dd/MM/yyyy'}}
-                    </p>
-                </div>
-            </md-list-item>
-        </md-list>
-        <md-button class="md-raised" ng-click="addComment()">Comment</md-button>
-    </md-card>
+                    <h3>{{comment.content}}</h3>
+                </md-card-content>
+                <md-card-footer>
+                    {{n.createDate | date : 'dd/MM/yyyy'}}
+                </md-card-footer>
+            </div>
+        </md-card>
+        <md-button ng-if="!n.showCommentTextArea" class="md-raised" ng-click="addComment($index)">Comment</md-button>
+        <md-input-container ng-if="n.showCommentTextArea">
+            <input rows=3 autofocus ng-model="test" />
+            <md-button class="md-raised" ng-click="persistComment()">Add</md-button>
+        </md-input-container>
+    </md-list>
 </div>

@@ -16,6 +16,20 @@ angular.module('app')
             //     news_id: $scope.news[0]._id
             // });
         });
+
+        $scope.addComment = function(index) {
+            $scope.news[index].showCommentTextArea = true;
+            // $scope.news[index].news_comments.push({
+            //     author: "test",
+            //     content: "Test first news content",
+            //     news_id: $scope.news[0]._id
+            // });
+        };
+
+        $scope.persistComment = function() {
+
+        };
+
         // news.addNews({
         //     content: "Test first news content",
         //     link: "http://0.0.0.0:9002/webclient/home",

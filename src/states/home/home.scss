@@ -1,10 +1,13 @@
 #home {
-	
-	min-height: calc(100vh - 135px);
+	height: calc(100vh - 135px);
 
-	md-list {
-		background-color: #AAA;
+	md-card {
 		max-height: 300px;
 		overflow-y: scroll;
+	}
+	md-list-item {
+		>h2, p, a {
+			width: 100%;
+		}
 	}
 }
