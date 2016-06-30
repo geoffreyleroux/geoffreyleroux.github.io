@@ -7,6 +7,8 @@ angular.module("app", [
     'ui.router',
     'ng.deviceDetector',
 
+    'directive.autofocus',
+
     'service.news',
     'service.comments'
 ])
