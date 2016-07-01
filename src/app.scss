@@ -33,8 +33,8 @@ a {
 
 // Component styles are injected through grunt
 // injector
+@import 'components/directive/newsactions/newsactions.scss';
 @import 'components/directive/newssubheader/newssubheader.scss';
-@import 'components/directive/newssubheader2 - copie/newssubheader.scss';
 @import 'states/comments/comments.scss';
 @import 'states/home/home.scss';
 @import 'states/news/news.scss';
