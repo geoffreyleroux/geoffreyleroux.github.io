@@ -1,0 +1,14 @@
+<div id="newsactions">
+    <md-button class="md-fab md-primary">
+        <i class="material-icons" ng-click="voteup(news)">thumb_up</i>
+    </md-button>
+    <md-button class="md-fab md-primary">
+        <i class="material-icons" ng-click="votedown(news)">thumb_down</i>
+    </md-button>
+    <md-button ng-click="goToComments(news._id)" class="md-fab md-warn">
+        <i class="material-icons">comment</i>
+    </md-button>
+    <md-button ng-click="goToDetails(news._id)" class="md-fab md-accent">
+        <i class="material-icons">arrow_forward</i>
+    </md-button>
+</div>

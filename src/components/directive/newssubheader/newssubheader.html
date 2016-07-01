@@ -1,0 +1,26 @@
+<div id="newssubheader">
+    <md-subheader class="md-primary">
+        <p>
+            <h2>{{news.title}}</h2>
+        </p>
+        <p>
+            <a class="link" target="_blank" href='{{news.link}}'>{{news.link}}</a>
+        </p>
+        <div class="md-list-item-text">
+            <md-content>
+                <p>
+                    <span>{{news.createDate}}</span>
+                    <span>, written by {{news.author}}</span>
+                    <span class="points"> 
+                       <ng-pluralize count="news.vote" when="{ '0': ', no point |', 'one': ', {} point |', 'other': ', {} points | ' }">
+                        </ng-pluralize> 
+                      </span>
+                    <span> 
+                        <ng-pluralize count="news.comments.length" when="{ '0': 'no comment', 'one': '{} comment', 'other': '{} comments' }">
+                        </ng-pluralize>
+                    </span>
+                </p>
+            </md-content>
+        </div>
+    </md-subheader>
+</div>
