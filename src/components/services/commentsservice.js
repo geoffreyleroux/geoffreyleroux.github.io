@@ -3,22 +3,11 @@ angular.module('service.comments', [])
     .factory('comments', function($window, $q, $http) {
         var baseURL = "http://infinite-peak-72019.herokuapp.com";
         // var baseURL = "http://localhost:8080";
-
-
-        var getOneNewsComments = function(news_id) {
+        
+        var addComments = function(news_id, params) {
             return fetchData({
-                method: 'GET',
-                url: baseURL + '/comments/' + news_id,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        };
-
-        var addComments = function(params) {
-            return fetchData({
-                method: 'POST',
-                url: baseURL + '/comments',
+                method: 'PUT',
+                url: baseURL + '/news/' + news_id + '/comments',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -43,7 +32,7 @@ angular.module('service.comments', [])
         };
 
         var exports = {
-            getOneNewsComments: getOneNewsComments,
+            // getOneNewsComments: getOneNewsComments,
             addComments: addComments
         };
 

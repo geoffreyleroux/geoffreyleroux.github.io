@@ -2,6 +2,7 @@
 angular.module('service.news', [])
     .factory('news', function($window, $q, $http) {
         var baseURL = "https://infinite-peak-72019.herokuapp.com";
+        // var baseURL = "http://localhost:8080";
 
         var getNews = function() {
             return fetchData({
@@ -30,7 +31,18 @@ angular.module('service.news', [])
                 url: baseURL + '/news/' + id,
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                }   
+            });
+        };
+
+        var updateVote = function(news_id, params) {
+            return fetchData({
+                method: 'PUT',
+                url: baseURL + '/news/' + news_id + '/vote',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: params
             });
         };
 
@@ -61,6 +73,7 @@ angular.module('service.news', [])
         };
 
         var exports = {
+            updateVote: updateVote,
             getNews: getNews,
             getOneNews: getOneNews,
             addNews: addNews,
