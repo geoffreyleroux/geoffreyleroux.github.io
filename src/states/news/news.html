@@ -1,0 +1,33 @@
+<div ng-show="loadingComments" class="container">
+    <md-progress-linear md-mode="query"></md-progress-linear>
+</div>
+<div id="comments" ng-show="!loadingComments && news">
+    <md-subheader class="md-primary">
+        <p>
+            <h2>{{news.title}}</h2>
+        </p>
+        <p>
+            <a target="_blank"  href='{{news.link}}'>{{news.link}}</a>
+        </p>
+        <div class="md-list-item-text">
+            <md-content>
+                <p>
+                    <span>{{news.createDate}}</span>
+                    <span>, written by {{news.author}}</span>
+                    <span class="points"> 
+                        <ng-pluralize count="news.vote" when="{ '0': ' - no vote |', 'one': ' - {} vote |', 'other': ' - {} votes | ' }">
+                        </ng-pluralize> 
+                      </span>
+                    <span> 
+                        <ng-pluralize count="news.comments.length" when="{ '0': 'no comment', 'one': '{} comment', 'other': '{} comments' }">
+                        </ng-pluralize>
+                    </span>
+                </p>
+            </md-content>
+        </div>
+        </h4>
+    </md-subheader>
+    <md-content flex layout-padding layout-align="center" layout-wrap>
+        {{news.content}}
+    </md-content>
+</div>
