@@ -5,8 +5,7 @@ angular.module("app", [
     'ngAnimate',
     'ngMaterial',
     'ui.router',
-    'ng.deviceDetector',
-
+    
     'directive.autofocus',
 
     'service.news',
@@ -31,10 +30,25 @@ angular.module("app", [
             abstract: true,
         })
         .state('webclient.home', {
-            url: '/home',
+            url: '/home/:filter',
             templateUrl: '/states/home/home.html',
-            controller: 'HomeCtrl',
-            menu: "home"
+            controller: 'HomeCtrl'
+        })
+        .state('webclient.comments', {
+            url: '/comments/:id',
+            templateUrl: '/states/comments/comments.html',
+            controller: 'CommentsCtrl'
+        })
+        .state('webclient.news', {
+            url: '/news/:id',
+            templateUrl: '/states/news/news.html',
+            controller: 'NewsCtrl'
+        })
+        .state('webclient.submit', {
+            url: '/submit',
+            templateUrl: '/states/news/submit.html',
+            controller: 'SubmitCtrl',
+            menu: 'submit'
         });
 
 
