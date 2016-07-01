@@ -8,10 +8,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway:200,400,500,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- build:css(.) /vendor.css -->
     <link rel="stylesheet" href="/bower_components/pure/base.css"/>
     <link rel="stylesheet" href="/bower_components/pure/grids.css"/>
@@ -21,6 +20,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
+
     <!-- endbuild -->
     
     <!-- build:css({build/.tmp,src}) /app.css -->
@@ -48,11 +48,10 @@
     <script src="/bower_components/angular-translate/angular-translate.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/lodash/lodash.js"></script>
-    <script src="/bower_components/re-tree/re-tree.js"></script>
-    <script src="/bower_components/ng-device-detector/ng-device-detector.js"></script>
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
     <!-- endbower -->
 
     <!-- endbuild -->
@@ -64,7 +63,10 @@
     <script src="/components/directives/autofocus.js"></script>
     <script src="/components/services/commentsservice.js"></script>
     <script src="/components/services/newsservice.js"></script>
+    <script src="/states/comments/comments.js"></script>
     <script src="/states/home/home.js"></script>
+    <script src="/states/news/news.js"></script>
+    <script src="/states/news/submit.js"></script>
     <script src="/states/webclient.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->
