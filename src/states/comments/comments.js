@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('CommentsCtrl', function($scope, $http, news, comments, $state) {
+    .controller('CommentsCtrl', function($scope, $http, news, comments, $state, dialog) {
         $scope.comment = "";
         var refresh = function() {
             $scope.loadingComments = true;
@@ -11,6 +11,7 @@ angular.module('app')
                 $scope.loadingComments = false;
             });
         };
+
         $scope.addComment = function() {
             var comment = {
                 author: "geoffrey leroux",
@@ -18,7 +19,9 @@ angular.module('app')
             };
             comments.addComments($scope.news._id, comment).then(function() {
                 refresh();
+                dialog.confirm("Comment successfully added.");
             });
         }
+
         refresh();
     });

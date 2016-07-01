@@ -3,17 +3,17 @@
 </div>
 <md-subheader class="md-primary">All news</md-subheader>
 <md-list flex id="home">
-    <md-list-item ng-repeat="n in news | orderBy:sortby:reverse">
+    <md-list-item ng-repeat="n in news | orderBy:sortby:reverse" style="transition-delay:{{ ($index+1) * 100}}ms; " class="fade">
         <div class="md-list-item-text">
             <p>
                 <h3>{{n.title}}</h3>
-                <a href='{{n.link}}' target="_blank">{{n.link}}</a>
+                <a class="link" href='{{n.link}}' target="_blank">{{n.link}}</a>
             </p>
             <p class="content">{{n.content}}</p>
             <p>
                 <span>{{n.createDate}}</span>
                 <span class="points">
-                     <ng-pluralize count="n.vote" when="{ '0': ' - no vote |', 'one': ' - {} vote |', 'other': ' - {} votes | ' }">
+                     <ng-pluralize count="n.vote" when="{ '0': ', no point |', 'one': ', {} point |', 'other': ', {} points | ' }">
                      </ng-pluralize> 
                 </span>
                 <span>
@@ -25,18 +25,7 @@
             </p>
         </div>
         <div class="md-list-item-text actions">
-            <md-button class="md-fab md-primary">
-                <i class="material-icons" ng-click="voteup(n)">thumb_up</i>
-            </md-button>
-            <md-button class="md-fab md-primary">
-                <i class="material-icons" ng-click="votedown(n)">thumb_down</i>
-            </md-button>
-            <md-button ng-click="goToComments(n._id)" class="md-fab md-warn">
-                <i ui-sref="webclient.comments({id:n._id})" class="material-icons">comment</i>
-            </md-button>
-            <md-button ng-click="goToDetails(n._id)" class="md-fab md-accent">
-                <i class="material-icons">arrow_forward</i>
-            </md-button>
+     <newsactions news="n"></newsactions>
         </div>
         <md-divider></md-divider>
     </md-list-item>

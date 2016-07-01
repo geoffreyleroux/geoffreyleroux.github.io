@@ -20,22 +20,5 @@ angular.module('app')
             });
         };
 
-        $scope.goToDetails = function(news_id) {
-            $state.go('webclient.news', { id: news_id });
-        };
-        $scope.goToComments = function(news_id) {
-            $state.go('webclient.comments', { id: news_id });
-        };
-
-        $scope.voteup = function(newsModel) {
-            newsModel.vote++;
-            news.updateVote(newsModel._id, newsModel);
-        };
-
-        $scope.votedown = function(newsModel) {
-            newsModel.vote--;
-            news.updateVote(newsModel._id, newsModel);
-        };
-
         refresh();
     });
