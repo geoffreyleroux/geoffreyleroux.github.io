@@ -2,5 +2,17 @@
 	overflow: hidden;
 }
 .app-content {
-	padding-top: 40px;
+	// padding-top: 40px;
+	height: calc(100vh - 96px);
+
+	>section {
+		padding-bottom: 5em;
+	}
+}
+.menu-bottom {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
 }

@@ -1,28 +1,43 @@
-<md-subheader class="md-primary">All news</md-subheader>
-<div id="home" layout="row" layout-align="center" layout-wrap>
-    <md-list layout-padding ng-repeat="n in news">
-        <md-list-item class="md-3-line">
-            <h2>{{n.title}}</h2>
-            <p>{{n.content}}</p>
-            <a href='{{n.link}}'>{{n.link}}</a>
-            <p>{{n.createDate | date : 'dd/MM/yyyy'}}</p>
-        </md-list-item>
-        <md-card ng-if="n.news_comments.length">
-            <h2>Comments</h2>
-            <div ng-repeat="comment in n.news_comments track by $index">
-                <md-card-content>
-                    <h4>{{comment.author}}</h4>
-                    <h3>{{comment.content}}</h3>
-                </md-card-content>
-                <md-card-footer>
-                    {{n.createDate | date : 'dd/MM/yyyy'}}
-                </md-card-footer>
-            </div>
-        </md-card>
-        <md-button ng-if="!n.showCommentTextArea" class="md-raised" ng-click="addComment($index)">Comment</md-button>
-        <md-input-container ng-if="n.showCommentTextArea">
-            <input rows=3 autofocus ng-model="test" />
-            <md-button class="md-raised" ng-click="persistComment()">Add</md-button>
-        </md-input-container>
-    </md-list>
+<div ng-show="loadingNews" class="container">
+    <md-progress-linear class="md-accent" md-mode="query"></md-progress-linear>
 </div>
+<md-subheader class="md-primary">All news</md-subheader>
+<md-list flex id="home">
+    <md-list-item ng-repeat="n in news | orderBy:sortby:reverse">
+        <div class="md-list-item-text">
+            <p>
+                <h3>{{n.title}}</h3>
+                <a href='{{n.link}}' target="_blank">{{n.link}}</a>
+            </p>
+            <p class="content">{{n.content}}</p>
+            <p>
+                <span>{{n.createDate}}</span>
+                <span class="points">
+                     <ng-pluralize count="n.vote" when="{ '0': ' - no vote |', 'one': ' - {} vote |', 'other': ' - {} votes | ' }">
+                     </ng-pluralize> 
+                </span>
+                <span>
+                    <a ui-sref="webclient.comments({id:n._id})">
+                        <ng-pluralize count="n.comments.length" when="{ '0': 'no comment', 'one': '{} comment', 'other': '{} comments' }">
+                        </ng-pluralize>
+                    </a>
+                </span>
+            </p>
+        </div>
+        <div class="md-list-item-text actions">
+            <md-button class="md-fab md-primary">
+                <i class="material-icons" ng-click="voteup(n)">thumb_up</i>
+            </md-button>
+            <md-button class="md-fab md-primary">
+                <i class="material-icons" ng-click="votedown(n)">thumb_down</i>
+            </md-button>
+            <md-button ng-click="goToComments(n._id)" class="md-fab md-warn">
+                <i ui-sref="webclient.comments({id:n._id})" class="material-icons">comment</i>
+            </md-button>
+            <md-button ng-click="goToDetails(n._id)" class="md-fab md-accent">
+                <i class="material-icons">arrow_forward</i>
+            </md-button>
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+</md-list>

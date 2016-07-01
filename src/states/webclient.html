@@ -1,9 +1,29 @@
 <div layout="column" flex layout-fill ng-cloak>
     <md-toolbar md-scroll-shrink>
-        <div class="md-toolbar-tools">
-            <h2>Material Hacker News</h2></div>
+        <div layout="row">
+            <div class="md-toolbar-tools">
+                <h2>Material Hacker News</h2>
+            </div>
+        </div>
     </md-toolbar>
 </div>
-<md-content md-theme="altTheme">
-    <section class="app-content" ui-view autoscroll='true'></section>
+<md-content class="app-content">
+    <section ui-view autoscroll='true'></section>
 </md-content>
+
+<div layout="column" flex layout-fill ng-cloak>
+    <md-tabs class="md-accent">
+        <md-tab id="tab1" md-active="(activeMenu == 'news') ? true : false" ng-click="filterByDate()">
+            <md-tab-label>Fresh</md-tab-label>
+        </md-tab>
+        <md-tab id="tab2" md-active="(activeMenu == 'comments') ? true : false" ng-click="filterByCommentsCount()">
+            <md-tab-label>Trending</md-tab-label>
+        </md-tab>
+        <md-tab id="tab3" md-active="(activeMenu == 'vote') ? true : false" ng-click="filterByVotes()">
+            <md-tab-label>Hot</md-tab-label>
+        </md-tab>
+        <md-tab id="tab4" md-active="(activeMenu == 'submit') ? true : false" ng-click="goTo('webclient.submit')">
+            <md-tab-label>Submit</md-tab-label>
+        </md-tab>
+    </md-tabs>
+</div>

@@ -1,40 +1,41 @@
 'use strict';
 
 angular.module('app')
-    .controller('HomeCtrl', function($scope, $http, news, comments, $timeout) {
-        news.getNews().then(function(data) {
-            $scope.news = data;
-            _.each($scope.news, function(news) {
-                comments.getOneNewsComments(news._id).then(function(data) {
-                    news.news_comments = data;
+    .controller('HomeCtrl', function($scope, $http, news, $state, $filter) {
+        $scope.reverse = true;
+        var refresh = function() {
+            $scope.loadingNews = true;
+            news.getNews().then(function(data) {
+                $scope.news = data;
+                $scope.loadingNews = false;
+                if ($state.params.filter) {
+                    $scope.sortby = $state.params.filter;
+                    if ($scope.sortby == "comments") {
+                        $scope.sortby = 'comments.length';
+                    }
+                }
+                _.each($scope.news, function(n) {
+                    n.createDate = moment(n.createDate).fromNow();
                 });
             });
-
-            // comments.addComments({
-            //     author: "test",
-            //     content: "Test first news content",
-            //     news_id: $scope.news[0]._id
-            // });
-        });
-
-        $scope.addComment = function(index) {
-            $scope.news[index].showCommentTextArea = true;
-            // $scope.news[index].news_comments.push({
-            //     author: "test",
-            //     content: "Test first news content",
-            //     news_id: $scope.news[0]._id
-            // });
         };
 
-        $scope.persistComment = function() {
-
+        $scope.goToDetails = function(news_id) {
+            $state.go('webclient.news', { id: news_id });
+        };
+        $scope.goToComments = function(news_id) {
+            $state.go('webclient.comments', { id: news_id });
         };
 
-        // news.addNews({
-        //     content: "Test first news content",
-        //     link: "http://0.0.0.0:9002/webclient/home",
-        //     title: "Test first news title",
-        //     vote: 0
-        // });
+        $scope.voteup = function(newsModel) {
+            newsModel.vote++;
+            news.updateVote(newsModel._id, newsModel);
+        };
 
+        $scope.votedown = function(newsModel) {
+            newsModel.vote--;
+            news.updateVote(newsModel._id, newsModel);
+        };
+
+        refresh();
     });
