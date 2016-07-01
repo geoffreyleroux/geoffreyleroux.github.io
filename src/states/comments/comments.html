@@ -1,0 +1,52 @@
+<div ng-show="loadingComments" class="container">
+    <md-progress-linear md-mode="query"></md-progress-linear>
+</div>
+<div id="comments" ng-show="!loadingComments && news">
+    <md-subheader class="md-primary">
+        <p>
+            <h2>{{news.title}}</h2>
+        </p>
+        <p>
+            <a target="_blank" href='{{news.link}}'>{{news.link}}</a>
+        </p>
+        <div class="md-list-item-text">
+            <md-content>
+                <p>
+                    <span>{{news.createDate}}</span>
+                    <span>, written by {{news.author}}</span>
+                    <span class="points"> 
+                        <ng-pluralize count="news.vote" when="{ '0': ' - no vote | ', 'one': ' - {} vote | ', 'other': ' - {} votes | ' }">
+                        </ng-pluralize> 
+                      </span>
+                    <span> 
+                        <ng-pluralize count="news.comments.length" when="{ '0': 'no comment', 'one': '{} comment', 'other': '{} comments' }">
+                        </ng-pluralize>
+                    </span>
+                </p>
+            </md-content>
+        </div>
+        </h4>
+    </md-subheader>
+    <md-content flex='50' layout-padding layout-align="center" layout-wrap>
+        {{news.content}}
+    </md-content>
+    <div flex='50' layout="column" layout-padding layout-align="center" layout-wrap>
+        <md-input-container>
+            <label>Enter your comment</label>
+            <textarea rows='3' ng-model="comment" name=""></textarea>
+        </md-input-container>
+    </div>
+    <div flex='10'>
+        <md-button class="md-raised" ng-disabled="!(comment.length > 5 && comment.length <= 140)" ng-click="addComment()">Comment</md-button>
+    </div>
+    <md-list flex class="comment">
+        <md-subheader ng-if="news.comments.length" class="md-no-sticky">Comments</md-subheader>
+        <md-list-item class="md-3-line fade" ng-repeat="comment in news.comments track by $index" style="transition-delay:{{ ($index+1) * 200}}ms; ">
+            <div class="md-list-item-text">
+                <h3>{{comment.content}}</h3>
+                <p>{{comment.createDate | date : 'dd/MM/yyyy'}}</p>
+            </div>
+            <md-divider></md-divider>
+        </md-list-item>
+    </md-list>
+</div>
