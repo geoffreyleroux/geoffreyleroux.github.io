@@ -3,10 +3,27 @@
 * {
 	font-weight: 400;
 	font-family: 'Open Sans', sans-serif;
+	outline: 0;
 }
-
+body {
+	overflow: hidden;
+}
+a {
+	color: rgb(63, 81, 181);
+	text-decoration: none;
+}
+h1, h2, h3, h4, p, a {
+	margin: 0;
+	line-height: 20px;
+}
+.md-subheader-wrapper {
+	z-index: 21 !important;
+}
 // Component styles are injected through grunt
 // injector
+@import 'states/comments/comments.scss';
 @import 'states/home/home.scss';
+@import 'states/news/news.scss';
+@import 'states/news/submit.scss';
 @import 'states/webclient.scss';
 // endinjector
