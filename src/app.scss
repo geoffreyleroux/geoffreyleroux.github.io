@@ -1,29 +1,44 @@
 @import 'compass';
-
 * {
-	font-weight: 400;
-	font-family: 'Open Sans', sans-serif;
-	outline: 0;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    outline: 0;
 }
+
 body {
-	overflow: hidden;
+    overflow: hidden;
 }
+
 a {
-	color: rgb(63, 81, 181);
-	text-decoration: none;
+    color: rgb(63, 81, 181);
+    text-decoration: none;
+    &.link {
+        font-size: 12px;
+    }
 }
-h1, h2, h3, h4, p, a {
-	margin: 0;
-	line-height: 20px;
+
+h1,
+h2,
+h3,
+h4,
+p,
+a {
+    margin: 0;
+    line-height: 20px;
 }
+
 .md-subheader-wrapper {
-	z-index: 21 !important;
+    z-index: 21 !important;
 }
+
 // Component styles are injected through grunt
 // injector
+@import 'components/directive/newssubheader/newssubheader.scss';
+@import 'components/directive/newssubheader2 - copie/newssubheader.scss';
 @import 'states/comments/comments.scss';
 @import 'states/home/home.scss';
 @import 'states/news/news.scss';
 @import 'states/news/submit.scss';
 @import 'states/webclient.scss';
+@import 'styles/animate.scss';
 // endinjector
