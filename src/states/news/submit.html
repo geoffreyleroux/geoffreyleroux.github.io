@@ -1,0 +1,28 @@
+<div id="sumbit">
+    <md-subheader class="md-primary">
+        <h3>Submit a news</h3>
+    </md-subheader>
+    <form name="form">
+        <div flex='50' layout="column" layout-padding layout-align="center" layout-wrap>
+            <md-input-container>
+                <label>Title</label>
+                <input rows='3' ng-model="news.title" name="" required/>
+            </md-input-container>
+            <md-input-container>
+                <label>Content</label>
+                <textarea  ng-model="news.content" name="" required></textarea>
+            </md-input-container>
+            <md-input-container>
+                <label>Author</label>
+                <input rows='3' ng-model="news.author" name="" required=""/>
+            </md-input-container>
+            <md-input-container>
+                <label>Link</label>
+                <input type="url" ng-model="news.link" required/>
+            </md-input-container>
+        </div>
+    </form>
+    <div flex='10'>
+        <md-button class="md-raised" ng-disabled="form.$invalid" ng-click="addNews()">Submit</md-button>
+    </div>
+</div>
