@@ -6,8 +6,10 @@ angular.module("app", [
     'ngMaterial',
     'ui.router',
     
-    'directive.autofocus',
-
+    'directive.newssubheader',
+    'directive.newsactions',
+    
+    'service.dialog',
     'service.news',
     'service.comments'
 ])
